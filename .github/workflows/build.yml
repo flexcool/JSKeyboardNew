@@ -20,15 +20,17 @@ jobs:
         run: |
           sudo xcode-select -switch /Applications/Xcode.app
           xcodebuild -version
+          echo "=== Available schemes ==="
           xcodebuild -project JSKeyboard.xcodeproj -list 2>&1 || true
       
-      - name: Build App
+      - name: Build Main App
         id: build_app
         run: |
           set -e
           rm -rf build
           mkdir -p build
           
+          echo "=== Building JSKeyboard ==="
           xcodebuild build \
             -project JSKeyboard.xcodeproj \
             -target JSKeyboard \
@@ -43,20 +45,22 @@ jobs:
             VALID_ARCHS=arm64 \
             2>&1 | tee build/app.log
           
-          APP=$(find build -name "JSKeyboard.app" -type d 2>/dev/null | head -1)
-          if [ -z "$APP" ]; then
+          APP=$(find . -name "JSKeyboard.app" -type d 2>/dev/null | head -1)
+          if [ -n "$APP" ]; then
+            echo "app_path=$APP" >> $GITHUB_OUTPUT
+            echo "✅ App built: $APP"
+          else
             echo "❌ App not found"
             find . -name "*.app" -type d 2>/dev/null
+            echo "app_path=" >> $GITHUB_OUTPUT
             exit 1
           fi
-          echo "app_path=$APP" >> $GITHUB_OUTPUT
-          echo "✅ App built: $APP"
-          ls -la "$APP"
       
       - name: Build Extension
         id: build_ext
         run: |
           set -e
+          echo "=== Building JSKeyboardExtension ==="
           xcodebuild build \
             -project JSKeyboard.xcodeproj \
             -target JSKeyboardExtension \
@@ -71,12 +75,13 @@ jobs:
             VALID_ARCHS=arm64 \
             2>&1 | tee build/ext.log
           
-          EXT=$(find build -name "JSKeyboardExtension.appex" -type d 2>/dev/null | head -1)
+          EXT=$(find . -name "JSKeyboardExtension.appex" -type d 2>/dev/null | head -1)
           if [ -n "$EXT" ]; then
             echo "ext_path=$EXT" >> $GITHUB_OUTPUT
             echo "✅ Extension built: $EXT"
           else
-            echo "⚠️ Extension not found (embedding in app)"
+            echo "ext_path=" >> $GITHUB_OUTPUT
+            echo "⚠️ Extension not found (will embed in app)"
           fi
       
       - name: Package IPA
@@ -95,7 +100,6 @@ jobs:
             APP_NAME=$(basename "$APP" .app)
             mkdir -p "$PAYLOAD/$APP_NAME/PlugIns"
             cp -R "$EXT" "$PAYLOAD/$APP_NAME/PlugIns/"
-            echo "✅ Extension embedded"
           fi
           
           cd build
@@ -131,4 +135,6 @@ jobs:
             echo "请从 Actions → Artifacts 下载 JSKeyboard.ipa" >> $GITHUB_STEP_SUMMARY
           else
             echo "❌ **构建失败**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "查看上方日志了解详情" >> $GITHUB_STEP_SUMMARY
           fi
