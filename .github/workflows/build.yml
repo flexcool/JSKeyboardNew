@@ -5,12 +5,13 @@ on:
     branches: [main, master]
   pull_request:
     branches: [main, master]
-  workflow_dispatch:  # 允许手动触发
+  workflow_dispatch:
 
 jobs:
   build:
     name: Build IPA
-    runs-on: macos-latest
+    runs-on: macos-14  # xcode 15.4, iPhoneOS 17.5 SDK
+    # 使用较新的 runner，避免旧版 Xcode SDK 问题
     
     steps:
       - name: Checkout
@@ -20,34 +21,83 @@ jobs:
         run: |
           sudo xcode-select -switch /Applications/Xcode.app
           xcodebuild -version
+          xcodebuild -showsdks | grep iOS
       
       - name: Build and Archive
         run: |
+          set -e
           xcodebuild archive \
-            -workspace JSKeyboard.xcworkspace \
+            -project JSKeyboard.xcodeproj \
             -scheme JSKeyboard \
             -configuration Release \
             -sdk iphoneos \
             -archivePath build/JSKeyboard.xcarchive \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
-            PRODUCT_BUNDLE_IDENTIFIER=com.jskeyboard.app
+            CODE_SIGN_IDENTITY="" \
+            PRODUCT_BUNDLE_IDENTIFIER=com.jskeyboard.app \
+            IPHONEOS_DEPLOYMENT_TARGET=15.0 \
+            VALID_ARCHS=arm64 \
+            OTHER_CODE_SIGN_FLAGS="--timestamp=none" \
+            2>&1 | tail -50
+          echo "✅ Archive 完成"
+          ls -la build/
       
       - name: Export IPA
         run: |
+          set -e
+          # 创建 export plist
+          cat > export_options.plist << 'EOF'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>method</key>
+              <string>development</string>
+              <key>compileBitcode</key>
+              <false/>
+              <key>stripSwiftSymbols</key>
+              <true/>
+              <key>thinning</key>
+              <string>&lt;none&gt;</string>
+              <key>uploadBitcode</key>
+              <false/>
+              <key>teamID</key>
+              <string></string>
+              <key>signingStyle</key>
+              <string>manual</string>
+              <key>signingCertificate</key>
+              <string>iOS Development</string>
+          </dict>
+          </plist>
+          EOF
+          
           xcodebuild -exportArchive \
             -archivePath build/JSKeyboard.xcarchive \
             -exportPath build/IPA \
-            -exportOptionsPlist export.plist
+            -exportOptionsPlist export_options.plist \
+            2>&1 | tail -30
+          echo "✅ IPA 导出完成"
+          ls -la build/IPA/
       
       - name: Upload IPA
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: JSKeyboard
           path: build/IPA/JSKeyboard.ipa
+          retention-days: 7
       
-      - name: Upload xcarchive
+      - name: Upload xcarchive (fallback)
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: JSKeyboard-archive
           path: build/JSKeyboard.xcarchive
+          retention-days: 7
+      
+      - name: Report failure
+        if: failure()
+        run: |
+          echo "❌ 构建失败"
+          echo "请查看 GitHub Actions 日志获取详细错误信息"
