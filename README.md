@@ -16,3 +16,4 @@
 #   5. 先 Build & Run 主应用 JSKeyboard
 #   6. 在设备上：设置 > 通用 > 键盘 > 添加新键盘 > JSKeyboard
 #   7. 返回任意 App 即可使用自定义键盘
+# Force trigger
