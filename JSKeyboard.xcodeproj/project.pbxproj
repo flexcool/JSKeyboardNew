@@ -259,4 +259,3 @@ objects = {
 	/* End XCConfigurationList section */
 	};
 rootObject = 83878C91 /* Project object */;
-}
