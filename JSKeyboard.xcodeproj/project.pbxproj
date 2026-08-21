@@ -1,109 +1,152 @@
-// !$*UTF$!*
-objectVersion = 56;
-objects = {
-	/* Begin PBXBuildFile section */
-		000000BC /* AppDelegate.swift in Resources */ = {isa = PBXBuildFile; fileRef = 000000A7 /* AppDelegate.swift */; };
-		000000BD /* SceneDelegate.swift in Resources */ = {isa = PBXBuildFile; fileRef = 000000A8 /* SceneDelegate.swift */; };
-		000000BE /* DataManager.swift in Resources */ = {isa = PBXBuildFile; fileRef = 000000A9 /* DataManager.swift */; };
-		000000BF /* TextCategory.swift in Resources */ = {isa = PBXBuildFile; fileRef = 000000AA /* TextCategory.swift */; };
-		000000C0 /* ClipboardEntry.swift in Resources */ = {isa = PBXBuildFile; fileRef = 000000AB /* ClipboardEntry.swift */; };
-		000000C1 /* JSFunction.swift in Resources */ = {isa = PBXBuildFile; fileRef = 000000AC /* JSFunction.swift */; };
-		000000C2 /* Settings.swift in Resources */ = {isa = PBXBuildFile; fileRef = 000000AD /* Settings.swift */; };
-		000000C3 /* TabBarController.swift in Resources */ = {isa = PBXBuildFile; fileRef = 000000AE /* TabBarController.swift */; };
-		000000C4 /* TextTabViewController.swift in Resources */ = {isa = PBXBuildFile; fileRef = 000000AF /* TextTabViewController.swift */; };
-		000000C5 /* ClipboardTabViewController.swift in Resources */ = {isa = PBXBuildFile; fileRef = 000000B0 /* ClipboardTabViewController.swift */; };
-		000000C6 /* JSTabViewController.swift in Resources */ = {isa = PBXBuildFile; fileRef = 000000B1 /* JSTabViewController.swift */; };
-		000000C7 /* SettingsTabViewController.swift in Resources */ = {isa = PBXBuildFile; fileRef = 000000B2 /* SettingsTabViewController.swift */; };
-		000000C8 /* ViewModelExtensions.swift in Resources */ = {isa = PBXBuildFile; fileRef = 000000B3 /* ViewModelExtensions.swift */; };
-		000000C9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 000000B4 /* Info.plist */; };
-		000000CA /* JSKeyboard.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 000000B5 /* JSKeyboard.entitlements */; };
-		000000CB /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 000000B6 /* Contents.json */; };
-		000000CC /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 000000B7 /* Contents.json */; };
-		000000CD /* KeyboardViewController.swift in Resources */ = {isa = PBXBuildFile; fileRef = 000000B8 /* KeyboardViewController.swift */; };
-		000000CE /* JSKeyboardView.swift in Resources */ = {isa = PBXBuildFile; fileRef = 000000B9 /* JSKeyboardView.swift */; };
-		000000CF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 000000BA /* Info.plist */; };
-		000000D0 /* JSKeyboardExtension.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 000000BB /* JSKeyboardExtension.entitlements */; };
-	/* End PBXBuildFile section */
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
 
-	/* Begin PBXFileReference section */
-		000000A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/AppDelegate.swift'; sourceTree = "<group>"; };
-		000000A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/SceneDelegate.swift'; sourceTree = "<group>"; };
-		000000A9 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Models/DataManager.swift'; sourceTree = "<group>"; };
-		000000AA /* TextCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Models/TextCategory.swift'; sourceTree = "<group>"; };
-		000000AB /* ClipboardEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Models/ClipboardEntry.swift'; sourceTree = "<group>"; };
-		000000AC /* JSFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Models/JSFunction.swift'; sourceTree = "<group>"; };
-		000000AD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Models/Settings.swift'; sourceTree = "<group>"; };
-		000000AE /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/ViewControllers/TabBarController.swift'; sourceTree = "<group>"; };
-		000000AF /* TextTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/ViewControllers/TextTabViewController.swift'; sourceTree = "<group>"; };
-		000000B0 /* ClipboardTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/ViewControllers/ClipboardTabViewController.swift'; sourceTree = "<group>"; };
-		000000B1 /* JSTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/ViewControllers/JSTabViewController.swift'; sourceTree = "<group>"; };
-		000000B2 /* SettingsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/ViewControllers/SettingsTabViewController.swift'; sourceTree = "<group>"; };
-		000000B3 /* ViewModelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Extensions/ViewModelExtensions.swift'; sourceTree = "<group>"; };
-		000000B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = 'text.plist.xml'; path = '../JSKeyboard/Info.plist'; sourceTree = "<group>"; };
-		000000B5 /* JSKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = 'text.plist.entitlements'; path = '../JSKeyboard/JSKeyboard.entitlements'; sourceTree = "<group>"; };
-		000000B6 /* Contents.json */ = {isa = PBXFileReference; lastKnownFileType = 'text.json'; path = '../JSKeyboard/Assets.xcassets/Contents.json'; sourceTree = "<group>"; };
-		000000B7 /* Contents.json */ = {isa = PBXFileReference; lastKnownFileType = 'text.json'; path = '../JSKeyboard/Assets.xcassets/AppIcon.appiconset/Contents.json'; sourceTree = "<group>"; };
-		000000B8 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboardExtension/KeyboardViewController.swift'; sourceTree = "<group>"; };
-		000000B9 /* JSKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboardExtension/JSKeyboardView.swift'; sourceTree = "<group>"; };
-		000000BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = 'text.plist.xml'; path = '../JSKeyboardExtension/Info.plist'; sourceTree = "<group>"; };
-		000000BB /* JSKeyboardExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = 'text.plist.entitlements'; path = '../JSKeyboardExtension/JSKeyboardExtension.entitlements'; sourceTree = "<group>"; };
-		000000D1 /* JSKeyboard.app */ = {isa = PBXProductReference; explicitFileType = application.identifier; path = JSKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		000000D2 /* JSKeyboardExtension.appex */ = {isa = PBXProductReference; explicitFileType = "com.apple.product-type.bundle"; path = JSKeyboardExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-	/* End PBXFileReference section */
+/* Begin PBXBuildFile section */
+		8215000000000016 /* AppDelegate.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8215000000000001 /* AppDelegate.swift */; };
+		8215000000000017 /* SceneDelegate.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8215000000000002 /* SceneDelegate.swift */; };
+		8215000000000018 /* DataManager.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8215000000000003 /* DataManager.swift */; };
+		8215000000000019 /* TextCategory.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8215000000000004 /* TextCategory.swift */; };
+		821500000000001A /* ClipboardEntry.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8215000000000005 /* ClipboardEntry.swift */; };
+		821500000000001B /* JSFunction.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8215000000000006 /* JSFunction.swift */; };
+		821500000000001C /* Settings.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8215000000000007 /* Settings.swift */; };
+		821500000000001D /* TabBarController.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8215000000000008 /* TabBarController.swift */; };
+		821500000000001E /* TextTabViewController.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8215000000000009 /* TextTabViewController.swift */; };
+		821500000000001F /* ClipboardTabViewController.swift in Resources */ = {isa = PBXBuildFile; fileRef = 821500000000000A /* ClipboardTabViewController.swift */; };
+		8215000000000020 /* JSTabViewController.swift in Resources */ = {isa = PBXBuildFile; fileRef = 821500000000000B /* JSTabViewController.swift */; };
+		8215000000000021 /* SettingsTabViewController.swift in Resources */ = {isa = PBXBuildFile; fileRef = 821500000000000C /* SettingsTabViewController.swift */; };
+		8215000000000022 /* ViewModelExtensions.swift in Resources */ = {isa = PBXBuildFile; fileRef = 821500000000000D /* ViewModelExtensions.swift */; };
+		8215000000000023 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 821500000000000E /* Info.plist */; };
+		8215000000000024 /* JSKeyboard.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 821500000000000F /* JSKeyboard.entitlements */; };
+		8215000000000025 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 8215000000000010 /* Contents.json */; };
+		8215000000000026 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 8215000000000011 /* Contents.json */; };
+		8215000000000027 /* KeyboardViewController.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8215000000000012 /* KeyboardViewController.swift */; };
+		8215000000000028 /* JSKeyboardView.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8215000000000013 /* JSKeyboardView.swift */; };
+		8215000000000029 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8215000000000014 /* Info.plist */; };
+		821500000000002A /* JSKeyboardExtension.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 8215000000000015 /* JSKeyboardExtension.entitlements */; };
+/* End PBXBuildFile section */
 
-	/* Begin PBXFrameworksBuildPhase section */
-		000000D3 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (
-		); runOnlyForDeploymentPostprocessing = 0; };
-		000000D4 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (
-		); runOnlyForDeploymentPostprocessing = 0; };
-	/* End PBXFrameworksBuildPhase section */
+/* Begin PBXFileReference section */
+		8215000000000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/AppDelegate.swift'; sourceTree = "<group>"; };
+		8215000000000002 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/SceneDelegate.swift'; sourceTree = "<group>"; };
+		8215000000000003 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Models/DataManager.swift'; sourceTree = "<group>"; };
+		8215000000000004 /* TextCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Models/TextCategory.swift'; sourceTree = "<group>"; };
+		8215000000000005 /* ClipboardEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Models/ClipboardEntry.swift'; sourceTree = "<group>"; };
+		8215000000000006 /* JSFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Models/JSFunction.swift'; sourceTree = "<group>"; };
+		8215000000000007 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Models/Settings.swift'; sourceTree = "<group>"; };
+		8215000000000008 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/ViewControllers/TabBarController.swift'; sourceTree = "<group>"; };
+		8215000000000009 /* TextTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/ViewControllers/TextTabViewController.swift'; sourceTree = "<group>"; };
+		821500000000000A /* ClipboardTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/ViewControllers/ClipboardTabViewController.swift'; sourceTree = "<group>"; };
+		821500000000000B /* JSTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/ViewControllers/JSTabViewController.swift'; sourceTree = "<group>"; };
+		821500000000000C /* SettingsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/ViewControllers/SettingsTabViewController.swift'; sourceTree = "<group>"; };
+		821500000000000D /* ViewModelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Extensions/ViewModelExtensions.swift'; sourceTree = "<group>"; };
+		821500000000000E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = 'text.plist.xml'; path = '../JSKeyboard/Info.plist'; sourceTree = "<group>"; };
+		821500000000000F /* JSKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = 'text.plist.entitlements'; path = '../JSKeyboard/JSKeyboard.entitlements'; sourceTree = "<group>"; };
+		8215000000000010 /* Contents.json */ = {isa = PBXFileReference; lastKnownFileType = 'text.json'; path = '../JSKeyboard/Assets.xcassets/Contents.json'; sourceTree = "<group>"; };
+		8215000000000011 /* Contents.json */ = {isa = PBXFileReference; lastKnownFileType = 'text.json'; path = '../JSKeyboard/Assets.xcassets/AppIcon.appiconset/Contents.json'; sourceTree = "<group>"; };
+		8215000000000012 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboardExtension/KeyboardViewController.swift'; sourceTree = "<group>"; };
+		8215000000000013 /* JSKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboardExtension/JSKeyboardView.swift'; sourceTree = "<group>"; };
+		8215000000000014 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = 'text.plist.xml'; path = '../JSKeyboardExtension/Info.plist'; sourceTree = "<group>"; };
+		8215000000000015 /* JSKeyboardExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = 'text.plist.entitlements'; path = '../JSKeyboardExtension/JSKeyboardExtension.entitlements'; sourceTree = "<group>"; };
+		821500000000002B /* JSKeyboard.app */ = {isa = PBXProductReference; explicitFileType = application.identifier; path = JSKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		821500000000002C /* JSKeyboardExtension.appex */ = {isa = PBXProductReference; explicitFileType = "com.apple.product-type.bundle"; path = JSKeyboardExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
 
-	/* Begin PBXGroup section */
-		000000DB /* JSKeyboard */ = {isa = PBXGroup; children = (
-			000000DC /* JSKeyboard */;
-			000000DD /* JSKeyboardExtension */;
-			000000DE /* Frameworks */;
-			000000DF /* Libraries */;
-			000000E0 /* Products */;
-		); sourceTree = "<group>"; };
-		000000DC /* JSKeyboard */ = {isa = PBXGroup; children = (
-			000000A7 /* AppDelegate.swift */;
-			000000A8 /* SceneDelegate.swift */;
-			000000A9 /* DataManager.swift */;
-			000000AA /* TextCategory.swift */;
-			000000AB /* ClipboardEntry.swift */;
-			000000AC /* JSFunction.swift */;
-			000000AD /* Settings.swift */;
-			000000AE /* TabBarController.swift */;
-			000000AF /* TextTabViewController.swift */;
-			000000B0 /* ClipboardTabViewController.swift */;
-			000000B1 /* JSTabViewController.swift */;
-			000000B2 /* SettingsTabViewController.swift */;
-			000000B3 /* ViewModelExtensions.swift */;
-			000000B4 /* Info.plist */;
-			000000B5 /* JSKeyboard.entitlements */;
-			000000B6 /* Contents.json */;
-			000000B7 /* Contents.json */;
-		); name = JSKeyboard; sourceTree = "<group>"; };
-		000000DD /* JSKeyboardExtension */ = {isa = PBXGroup; children = (
+/* Begin PBXFrameworksBuildPhase section */
+		821500000000002D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		821500000000002E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
-		); path = JSKeyboardExtension; sourceTree = "<group>"; };
-		000000DE /* Frameworks */ = {isa = PBXGroup; sourceTree = "<group>"; };
-		000000DF /* Libraries */ = {isa = PBXGroup; sourceTree = "<group>"; };
-		000000E0 /* Products */ = {isa = PBXGroup; children = (
-			000000D1 /* JSKeyboard.app */;
-			000000D2 /* JSKeyboardExtension.appex */;
-		); name = Products; sourceTree = "<group>"; };
-	/* End PBXGroup section */
+/* Begin PBXGroup section */
+		8215000000000035 = {
+			isa = PBXGroup;
+			children = (
+				8215000000000036 /* JSKeyboard */;
+				8215000000000037 /* JSKeyboardExtension */;
+				8215000000000038 /* Frameworks */;
+				8215000000000039 /* Libraries */;
+				821500000000003A /* Products */;
+			);
+			sourceTree = "<group>";
+		};
+		8215000000000036 /* JSKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8215000000000001 /* AppDelegate.swift */;
+				8215000000000002 /* SceneDelegate.swift */;
+				8215000000000003 /* DataManager.swift */;
+				8215000000000004 /* TextCategory.swift */;
+				8215000000000005 /* ClipboardEntry.swift */;
+				8215000000000006 /* JSFunction.swift */;
+				8215000000000007 /* Settings.swift */;
+				8215000000000008 /* TabBarController.swift */;
+				8215000000000009 /* TextTabViewController.swift */;
+				821500000000000A /* ClipboardTabViewController.swift */;
+				821500000000000B /* JSTabViewController.swift */;
+				821500000000000C /* SettingsTabViewController.swift */;
+				821500000000000D /* ViewModelExtensions.swift */;
+				821500000000000E /* Info.plist */;
+				821500000000000F /* JSKeyboard.entitlements */;
+				8215000000000010 /* Contents.json */;
+				8215000000000011 /* Contents.json */;
+			);
+			path = JSKeyboard;
+			sourceTree = "<group>";
+		};
+		8215000000000037 /* JSKeyboardExtension */ = {
+			isa = PBXGroup;
+			children = (
+				8215000000000012 /* KeyboardViewController.swift */;
+				8215000000000013 /* JSKeyboardView.swift */;
+				8215000000000014 /* Info.plist */;
+				8215000000000015 /* JSKeyboardExtension.entitlements */;
+			);
+			path = JSKeyboardExtension;
+			sourceTree = "<group>";
+		};
+		8215000000000038 /* Frameworks */ = {
+			isa = PBXGroup;
+			sourceTree = "<group>";
+		};
+		8215000000000039 /* Libraries */ = {
+			isa = PBXGroup;
+			sourceTree = "<group>";
+		};
+		821500000000003A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				821500000000002B /* JSKeyboard.app */;
+				821500000000002C /* JSKeyboardExtension.appex */;
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
 
-	/* Begin PBXNativeTarget section */
-		000000D9 /* JSKeyboard */ = {
+/* Begin PBXNativeTarget section */
+		8215000000000033 /* JSKeyboard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 000000E2 /* Configurations */;
+			buildConfigurationList = 821500000000003B /* Build configuration list for PBXNativeTarget "JSKeyboard" */;
 			buildPhases = (
-				000000D5 /* Sources */;
-				000000D3 /* Frameworks */;
-				000000D7 /* Resources */;
+				821500000000002F /* Sources */;
+				821500000000002D /* Frameworks */;
+				8215000000000031 /* Resources */;
 			);
 			buildRules = (
 			);
@@ -111,16 +154,16 @@ objects = {
 			);
 			name = JSKeyboard;
 			productName = JSKeyboard;
-			productReference = 000000D1 /* JSKeyboard.app */;
+			productReference = 821500000000002B /* JSKeyboard.app */;
 			productType = "com.apple.product-type.application";
 		};
-		000000DA /* JSKeyboardExtension */ = {
+		8215000000000034 /* JSKeyboardExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 000000E3 /* Configurations */;
+			buildConfigurationList = 821500000000003C /* Build configuration list for PBXNativeTarget "JSKeyboardExtension" */;
 			buildPhases = (
-				000000D6 /* Sources */;
-				000000D4 /* Frameworks */;
-				000000D8 /* Resources */;
+				8215000000000030 /* Sources */;
+				821500000000002E /* Frameworks */;
+				8215000000000032 /* Resources */;
 			);
 			buildRules = (
 			);
@@ -128,21 +171,27 @@ objects = {
 			);
 			name = JSKeyboardExtension;
 			productName = JSKeyboardExtension;
-			productReference = 000000D2 /* JSKeyboardExtension.appex */;
+			productReference = 821500000000002C /* JSKeyboardExtension.appex */;
 			productType = "com.apple.product-type.bundle";
 		};
-	/* End PBXNativeTarget section */
+/* End PBXNativeTarget section */
 
-	/* Begin PBXProject section */
-		000000E9 /* Project object */ = {
+/* Begin PBXProject section */
+		8215000000000042 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					8215000000000033 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					8215000000000034 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
 			};
-			buildConfigurationList = 000000E4 /* Configurations */;
-			compatibilityVersion = "Xcode 14.0";
+			buildConfigurationList = 821500000000003D /* Build configuration list for PBXProject "JSKeyboard" */;
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -150,72 +199,168 @@ objects = {
 				Base,
 				zh-Hans,
 			);
-			mainGroup = 000000DB;
-			productRefGroup = 000000E0 /* Products */;
+			mainGroup = 8215000000000035;
+			productRefGroup = 821500000000003A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				000000D9 /* JSKeyboard */,
-				000000DA /* JSKeyboardExtension */,
+				8215000000000033 /* JSKeyboard */,
+				8215000000000034 /* JSKeyboardExtension */,
 			);
 		};
-	/* End PBXProject section */
+/* End PBXProject section */
 
-	/* Begin PBXSourcesBuildPhase section */
-		000000D5 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
-				000000BC /* AppDelegate.swift in Sources */;
-				000000BD /* SceneDelegate.swift in Sources */;
-				000000BE /* DataManager.swift in Sources */;
-				000000BF /* TextCategory.swift in Sources */;
-				000000C0 /* ClipboardEntry.swift in Sources */;
-				000000C1 /* JSFunction.swift in Sources */;
-				000000C2 /* Settings.swift in Sources */;
-				000000C3 /* TabBarController.swift in Sources */;
-				000000C4 /* TextTabViewController.swift in Sources */;
-				000000C5 /* ClipboardTabViewController.swift in Sources */;
-				000000C6 /* JSTabViewController.swift in Sources */;
-				000000C7 /* SettingsTabViewController.swift in Sources */;
-				000000C8 /* ViewModelExtensions.swift in Sources */;
-		); runOnlyForDeploymentPostprocessing = 0; };
-		000000D6 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
-				000000CD /* KeyboardViewController.swift in Sources */;
-				000000CE /* JSKeyboardView.swift in Sources */;
-		); runOnlyForDeploymentPostprocessing = 0; };
-	/* End PBXSourcesBuildPhase section */
+/* Begin PBXSourcesBuildPhase section */
+		821500000000002F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8215000000000016 /* AppDelegate.swift in Sources */;
+				8215000000000017 /* SceneDelegate.swift in Sources */;
+				8215000000000018 /* DataManager.swift in Sources */;
+				8215000000000019 /* TextCategory.swift in Sources */;
+				821500000000001A /* ClipboardEntry.swift in Sources */;
+				821500000000001B /* JSFunction.swift in Sources */;
+				821500000000001C /* Settings.swift in Sources */;
+				821500000000001D /* TabBarController.swift in Sources */;
+				821500000000001E /* TextTabViewController.swift in Sources */;
+				821500000000001F /* ClipboardTabViewController.swift in Sources */;
+				8215000000000020 /* JSTabViewController.swift in Sources */;
+				8215000000000021 /* SettingsTabViewController.swift in Sources */;
+				8215000000000022 /* ViewModelExtensions.swift in Sources */;
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8215000000000030 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8215000000000027 /* KeyboardViewController.swift in Sources */;
+				8215000000000028 /* JSKeyboardView.swift in Sources */;
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
 
-	/* Begin PBXResourcesBuildPhase section */
-		000000D7 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (
-				000000C9 /* Info.plist in Resources */;
-				000000CA /* JSKeyboard.entitlements in Resources */;
-				000000CB /* Contents.json in Resources */;
-				000000CC /* Contents.json in Resources */;
-		); runOnlyForDeploymentPostprocessing = 0; };
-		000000D8 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (
-				000000CF /* Info.plist in Resources */;
-				000000D0 /* JSKeyboardExtension.entitlements in Resources */;
-		); runOnlyForDeploymentPostprocessing = 0; };
-	/* End PBXResourcesBuildPhase section */
+/* Begin PBXResourcesBuildPhase section */
+		8215000000000031 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8215000000000023 /* Info.plist in Resources */;
+				8215000000000024 /* JSKeyboard.entitlements in Resources */;
+				8215000000000025 /* Contents.json in Resources */;
+				8215000000000026 /* Contents.json in Resources */;
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8215000000000032 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8215000000000029 /* Info.plist in Resources */;
+				821500000000002A /* JSKeyboardExtension.entitlements in Resources */;
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
-	/* Begin XCBuildConfiguration section */
-		000000E5 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = { ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CLANG_ENABLE_MODULES = YES; COPY_PHASE_STRIP = NO; DEBUG_INFORMATION_FORMAT = dwarf; IPHONEOS_DEPLOYMENT_TARGET = 15.0; PRODUCT_BUNDLE_IDENTIFIER = com.jskeyboard.app; SDKROOT = iphoneos; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; TARGETED_DEVICE_FAMILY = "1,2"; VALID_ARCHS = arm64; }; name = Debug; };
-		000000E6 /* Release */ = {isa = XCBuildConfiguration; buildSettings = { ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CLANG_ENABLE_MODULES = YES; COPY_PHASE_STRIP = NO; DEBUG_INFORMATION_FORMAT = dwarf-with-dsym; ENABLE_NS_ASSERTIONS = YES; IPHONEOS_DEPLOYMENT_TARGET = 15.0; PRODUCT_BUNDLE_IDENTIFIER = com.jskeyboard.app; SDKROOT = iphoneos; SWIFT_COMPILATION_MODE = wholemodule; SWIFT_OPTIMIZATION_LEVEL = "-O"; TARGETED_DEVICE_FAMILY = "1,2"; VALID_ARCHS = arm64; }; name = Release; };
-		000000E7 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = { CLANG_ENABLE_MODULES = YES; DEBUG_INFORMATION_FORMAT = dwarf; IPHONEOS_DEPLOYMENT_TARGET = 15.0; PRODUCT_BUNDLE_IDENTIFIER = com.jskeyboard.app.keyboard; SDKROOT = iphoneos; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; TARGETED_DEVICE_FAMILY = "1,2"; VALID_ARCHS = arm64; }; name = Debug; };
-		000000E8 /* Release */ = {isa = XCBuildConfiguration; buildSettings = { CLANG_ENABLE_MODULES = YES; DEBUG_INFORMATION_FORMAT = dwarf-with-dsym; ENABLE_NS_ASSERTIONS = YES; IPHONEOS_DEPLOYMENT_TARGET = 15.0; PRODUCT_BUNDLE_IDENTIFIER = com.jskeyboard.app.keyboard; SDKROOT = iphoneos; SWIFT_COMPILATION_MODE = wholemodule; SWIFT_OPTIMIZATION_LEVEL = "-O"; TARGETED_DEVICE_FAMILY = "1,2"; VALID_ARCHS = arm64; }; name = Release; };
-	/* End XCBuildConfiguration section */
+/* Begin XCBuildConfiguration section */
+		821500000000003E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jskeyboard.app;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = arm64;
+			};
+			name = Debug;
+		};
+		821500000000003F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jskeyboard.app;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = arm64;
+			};
+			name = Release;
+		};
+		8215000000000040 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jskeyboard.app.keyboard;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = arm64;
+			};
+			name = Debug;
+		};
+		8215000000000041 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jskeyboard.app.keyboard;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = arm64;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
 
-	/* Begin XCConfigurationList section */
-		000000E2 /* Configurations */ = {isa = XCConfigurationList; buildConfigurations = (
-			000000E5 /* Debug */,
-			000000E6 /* Release */,
-		); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
-		000000E3 /* Configurations */ = {isa = XCConfigurationList; buildConfigurations = (
-			000000E7 /* Debug */,
-			000000E8 /* Release */,
-		); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
-		000000E4 /* Configurations */ = {isa = XCConfigurationList; buildConfigurations = (
-			000000E5 /* Debug */,
-			000000E6 /* Release */,
-		); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
-	/* End XCConfigurationList section */
+/* Begin XCConfigurationList section */
+		821500000000003B /* Build configuration list for PBXNativeTarget "JSKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				821500000000003E /* Debug */,
+				821500000000003F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		821500000000003C /* Build configuration list for PBXNativeTarget "JSKeyboardExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8215000000000040 /* Debug */,
+				8215000000000041 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		821500000000003D /* Build configuration list for PBXProject "JSKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				821500000000003E /* Debug */,
+				821500000000003F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
 	};
-rootObject = 000000E9 /* Project object */;
+rootObject = 8215000000000042 /* Project object */;
+}
