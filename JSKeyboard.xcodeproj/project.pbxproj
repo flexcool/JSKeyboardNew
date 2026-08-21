@@ -258,4 +258,5 @@ objects = {
 		); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
 	/* End XCConfigurationList section */
 	};
-	};
+rootObject = 83878C91 /* Project object */;
+}
