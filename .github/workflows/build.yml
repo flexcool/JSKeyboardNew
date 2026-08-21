@@ -32,12 +32,8 @@ jobs:
           rm -rf build
           mkdir -p build
           
-          # 尝试用 workspace（如果存在）或 project
-          if [ -d "JSKeyboard.xcworkspace" ]; then
-            PROJECT_ARG="-workspace JSKeyboard.xcworkspace"
-          else
-            PROJECT_ARG="-project JSKeyboard.xcodeproj"
-          fi
+          # 使用 project（scheme 在 project 中）
+          PROJECT_ARG="-project JSKeyboard.xcodeproj" 
           
           echo "=== Building with: $PROJECT_ARG ==="
           xcodebuild build \
