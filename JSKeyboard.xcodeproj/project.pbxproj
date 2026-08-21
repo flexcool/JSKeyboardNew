@@ -77,34 +77,34 @@
 		8215000000000035 = {
 			isa = PBXGroup;
 			children = (
-				8215000000000036 /* JSKeyboard */;
-				8215000000000037 /* JSKeyboardExtension */;
-				8215000000000038 /* Frameworks */;
-				8215000000000039 /* Libraries */;
-				821500000000003A /* Products */;
+				8215000000000036 /* JSKeyboard */,
+				8215000000000037 /* JSKeyboardExtension */,
+				8215000000000038 /* Frameworks */,
+				8215000000000039 /* Libraries */,
+				821500000000003A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
 		8215000000000036 /* JSKeyboard */ = {
 			isa = PBXGroup;
 			children = (
-				8215000000000001 /* AppDelegate.swift */;
-				8215000000000002 /* SceneDelegate.swift */;
-				8215000000000003 /* DataManager.swift */;
-				8215000000000004 /* TextCategory.swift */;
-				8215000000000005 /* ClipboardEntry.swift */;
-				8215000000000006 /* JSFunction.swift */;
-				8215000000000007 /* Settings.swift */;
-				8215000000000008 /* TabBarController.swift */;
-				8215000000000009 /* TextTabViewController.swift */;
-				821500000000000A /* ClipboardTabViewController.swift */;
-				821500000000000B /* JSTabViewController.swift */;
-				821500000000000C /* SettingsTabViewController.swift */;
-				821500000000000D /* ViewModelExtensions.swift */;
-				821500000000000E /* Info.plist */;
-				821500000000000F /* JSKeyboard.entitlements */;
-				8215000000000010 /* Contents.json */;
-				8215000000000011 /* Contents.json */;
+				8215000000000001 /* AppDelegate.swift */,
+				8215000000000002 /* SceneDelegate.swift */,
+				8215000000000003 /* DataManager.swift */,
+				8215000000000004 /* TextCategory.swift */,
+				8215000000000005 /* ClipboardEntry.swift */,
+				8215000000000006 /* JSFunction.swift */,
+				8215000000000007 /* Settings.swift */,
+				8215000000000008 /* TabBarController.swift */,
+				8215000000000009 /* TextTabViewController.swift */,
+				821500000000000A /* ClipboardTabViewController.swift */,
+				821500000000000B /* JSTabViewController.swift */,
+				821500000000000C /* SettingsTabViewController.swift */,
+				821500000000000D /* ViewModelExtensions.swift */,
+				821500000000000E /* Info.plist */,
+				821500000000000F /* JSKeyboard.entitlements */,
+				8215000000000010 /* Contents.json */,
+				8215000000000011 /* Contents.json */,
 			);
 			path = JSKeyboard;
 			sourceTree = "<group>";
@@ -112,10 +112,10 @@
 		8215000000000037 /* JSKeyboardExtension */ = {
 			isa = PBXGroup;
 			children = (
-				8215000000000012 /* KeyboardViewController.swift */;
-				8215000000000013 /* JSKeyboardView.swift */;
-				8215000000000014 /* Info.plist */;
-				8215000000000015 /* JSKeyboardExtension.entitlements */;
+				8215000000000012 /* KeyboardViewController.swift */,
+				8215000000000013 /* JSKeyboardView.swift */,
+				8215000000000014 /* Info.plist */,
+				8215000000000015 /* JSKeyboardExtension.entitlements */,
 			);
 			path = JSKeyboardExtension;
 			sourceTree = "<group>";
@@ -131,8 +131,8 @@
 		821500000000003A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				821500000000002B /* JSKeyboard.app */;
-				821500000000002C /* JSKeyboardExtension.appex */;
+				821500000000002B /* JSKeyboard.app */,
+				821500000000002C /* JSKeyboardExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,9 +144,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 821500000000003B /* Build configuration list for PBXNativeTarget "JSKeyboard" */;
 			buildPhases = (
-				821500000000002F /* Sources */;
-				821500000000002D /* Frameworks */;
-				8215000000000031 /* Resources */;
+				821500000000002F /* Sources */,
+				821500000000002D /* Frameworks */,
+				8215000000000031 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -161,9 +161,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 821500000000003C /* Build configuration list for PBXNativeTarget "JSKeyboardExtension" */;
 			buildPhases = (
-				8215000000000030 /* Sources */;
-				821500000000002E /* Frameworks */;
-				8215000000000032 /* Resources */;
+				8215000000000030 /* Sources */,
+				821500000000002E /* Frameworks */,
+				8215000000000032 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -215,19 +215,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8215000000000016 /* AppDelegate.swift in Sources */;
-				8215000000000017 /* SceneDelegate.swift in Sources */;
-				8215000000000018 /* DataManager.swift in Sources */;
-				8215000000000019 /* TextCategory.swift in Sources */;
-				821500000000001A /* ClipboardEntry.swift in Sources */;
-				821500000000001B /* JSFunction.swift in Sources */;
-				821500000000001C /* Settings.swift in Sources */;
-				821500000000001D /* TabBarController.swift in Sources */;
-				821500000000001E /* TextTabViewController.swift in Sources */;
-				821500000000001F /* ClipboardTabViewController.swift in Sources */;
-				8215000000000020 /* JSTabViewController.swift in Sources */;
-				8215000000000021 /* SettingsTabViewController.swift in Sources */;
-				8215000000000022 /* ViewModelExtensions.swift in Sources */;
+								8215000000000016 /* AppDelegate.swift in Sources */,
+				8215000000000017 /* SceneDelegate.swift in Sources */,
+				8215000000000018 /* DataManager.swift in Sources */,
+				8215000000000019 /* TextCategory.swift in Sources */,
+				821500000000001A /* ClipboardEntry.swift in Sources */,
+				821500000000001B /* JSFunction.swift in Sources */,
+				821500000000001C /* Settings.swift in Sources */,
+				821500000000001D /* TabBarController.swift in Sources */,
+				821500000000001E /* TextTabViewController.swift in Sources */,
+				821500000000001F /* ClipboardTabViewController.swift in Sources */,
+				8215000000000020 /* JSTabViewController.swift in Sources */,
+				8215000000000021 /* SettingsTabViewController.swift in Sources */,
+				8215000000000022 /* ViewModelExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,8 +235,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8215000000000027 /* KeyboardViewController.swift in Sources */;
-				8215000000000028 /* JSKeyboardView.swift in Sources */;
+								8215000000000027 /* KeyboardViewController.swift in Sources */,
+				8215000000000028 /* JSKeyboardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,10 +247,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8215000000000023 /* Info.plist in Resources */;
-				8215000000000024 /* JSKeyboard.entitlements in Resources */;
-				8215000000000025 /* Contents.json in Resources */;
-				8215000000000026 /* Contents.json in Resources */;
+								8215000000000023 /* Info.plist in Resources */,
+				8215000000000024 /* JSKeyboard.entitlements in Resources */,
+				8215000000000025 /* Contents.json in Resources */,
+				8215000000000026 /* Contents.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,8 +258,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8215000000000029 /* Info.plist in Resources */;
-				821500000000002A /* JSKeyboardExtension.entitlements in Resources */;
+								8215000000000029 /* Info.plist in Resources */,
+				821500000000002A /* JSKeyboardExtension.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
