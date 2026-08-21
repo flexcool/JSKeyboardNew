@@ -13,7 +13,7 @@
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
-	<string>XPC!</string>
+	<string>XPC</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -32,7 +32,7 @@
 			<key>IntentInsightAllowed</key>
 			<true/>
 			<key>InputReturnType</key>
-			<string>DECIMAL</string>
+			<string>PLAIN-TEXT</string>
 			<key>ContentLength</key>
 			<integer>50</integer>
 		</dict>
