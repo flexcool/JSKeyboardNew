@@ -15,7 +15,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "131A2C91"
+               BlueprintIdentifier = "FEC8F2A3"
                BuildableName = "JSKeyboard.app"
                BlueprintName = "JSKeyboard"
                ReferencedContainer = "container:JSKeyboard.xcodeproj">
@@ -44,7 +44,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "131A2C91"
+            BlueprintIdentifier = "FEC8F2A3"
             BuildableName = "JSKeyboard.app"
             BlueprintName = "JSKeyboard"
             ReferencedContainer = "container:JSKeyboard.xcodeproj">
@@ -61,7 +61,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "131A2C91"
+            BlueprintIdentifier = "FEC8F2A3"
             BuildableName = "JSKeyboard.app"
             BlueprintName = "JSKeyboard"
             ReferencedContainer = "container:JSKeyboard.xcodeproj">
