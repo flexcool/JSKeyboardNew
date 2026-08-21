@@ -1,0 +1,53 @@
+name: Build JSKeyboard IPA
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  build:
+    name: Build IPA
+    runs-on: macos-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Set up Xcode
+        run: |
+          sudo xcode-select -switch /Applications/Xcode.app
+          xcodebuild -version
+      
+      - name: Build and Archive
+        run: |
+          xcodebuild archive \
+            -workspace JSKeyboard.xcworkspace \
+            -scheme JSKeyboard \
+            -configuration Release \
+            -sdk iphoneos \
+            -archivePath build/JSKeyboard.xcarchive \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            PRODUCT_BUNDLE_IDENTIFIER=com.jskeyboard.app
+      
+      - name: Export IPA
+        run: |
+          xcodebuild -exportArchive \
+            -archivePath build/JSKeyboard.xcarchive \
+            -exportPath build/IPA \
+            -exportOptionsPlist export.plist
+      
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: JSKeyboard
+          path: build/IPA/JSKeyboard.ipa
+      
+      - name: Upload xcarchive
+        uses: actions/upload-artifact@v4
+        with:
+          name: JSKeyboard-archive
+          path: build/JSKeyboard.xcarchive

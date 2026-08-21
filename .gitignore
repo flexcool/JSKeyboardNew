@@ -1,0 +1,10 @@
+.DS_Store
+*.xcuserdata/
+build/
+DerivedData/
+*.pyc
+__pycache__/
+project.yml
+generate_project.sh
+generate_project.swift
+generate_xcodeproj.py
