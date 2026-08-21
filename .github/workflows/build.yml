@@ -20,125 +20,73 @@ jobs:
         run: |
           sudo xcode-select -switch /Applications/Xcode.app
           xcodebuild -version
+          echo "=== Listing schemes ==="
           xcodebuild -project JSKeyboard.xcodeproj -list 2>&1 || true
       
-      - name: Clean Build
-        run: |
-          rm -rf build
-          mkdir -p build
-      
-      - name: Build Main App
-        id: build_main
+      - name: Build and Archive
         run: |
           set -e
-          echo "=== Building JSKeyboard ==="
-          BUILD_OUTPUT=$(xcodebuild build \
+          rm -rf build
+          mkdir -p build
+          
+          echo "=== Building and Archiving ==="
+          xcodebuild archive \
             -project JSKeyboard.xcodeproj \
-            -target JSKeyboard \
+            -scheme JSKeyboard \
             -configuration Release \
             -sdk iphoneos \
-            -arch arm64 \
+            -archivePath build/JSKeyboard.xcarchive \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
             PRODUCT_BUNDLE_IDENTIFIER=com.jskeyboard.app \
             IPHONEOS_DEPLOYMENT_TARGET=15.0 \
             VALID_ARCHS=arm64 \
-            OTHER_CODE_SIGN_FLAGS="--timestamp=none" \
-            BUILD_ROOT="$(pwd)/build" \
-            SYMROOT="$(pwd)/build" \
-            OBJROOT="$(pwd)/build" \
-            2>&1)
+            2>&1 | tee build/archive.log
           
-          echo "$BUILD_OUTPUT" | tail -20
-          echo "$BUILD_OUTPUT" > build/main_build.log
+          echo "=== Archive output ==="
+          ls -la build/
+          ls -la build/JSKeyboard.xcarchive/ 2>/dev/null || true
+          ls -la build/JSKeyboard.xcarchive/Products/ 2>/dev/null || true
           
-          # 查找 .app
-          APP=$(find build -name "JSKeyboard.app" -type d 2>/dev/null | head -1)
-          if [ -n "$APP" ]; then
-            echo "app_path=$APP" >> $GITHUB_OUTPUT
-            echo "✅ Main app built: $APP"
-          else
-            echo "❌ Main app not found"
-            ls -la build/
+          # 验证 archive 存在
+          if [ ! -d "build/JSKeyboard.xcarchive" ]; then
+            echo "❌ Archive 创建失败"
             exit 1
           fi
+          echo "✅ Archive 创建成功"
       
-      - name: Build Keyboard Extension
-        id: build_ext
+      - name: Export IPA (manual packaging)
         run: |
           set -e
-          echo "=== Building JSKeyboardExtension ==="
-          BUILD_OUTPUT=$(xcodebuild build \
-            -project JSKeyboard.xcodeproj \
-            -target JSKeyboardExtension \
-            -configuration Release \
-            -sdk iphoneos \
-            -arch arm64 \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_IDENTITY="" \
-            PRODUCT_BUNDLE_IDENTIFIER=com.jskeyboard.app.keyboard \
-            IPHONEOS_DEPLOYMENT_TARGET=15.0 \
-            VALID_ARCHS=arm64 \
-            OTHER_CODE_SIGN_FLAGS="--timestamp=none" \
-            BUILD_ROOT="$(pwd)/build" \
-            SYMROOT="$(pwd)/build" \
-            OBJROOT="$(pwd)/build" \
-            2>&1)
+          echo "=== Packaging IPA manually ==="
           
-          echo "$BUILD_OUTPUT" | tail -20
-          echo "$BUILD_OUTPUT" > build/ext_build.log
+          # 从 archive 中提取 .app
+          ARCHIVE="build/JSKeyboard.xcarchive"
+          APP="$ARCHIVE/Products/Applications/JSKeyboard.app"
           
-          EXT=$(find build -name "JSKeyboardExtension.appex" -type d 2>/dev/null | head -1)
-          if [ -n "$EXT" ]; then
-            echo "ext_path=$EXT" >> $GITHUB_OUTPUT
-            echo "✅ Extension built: $EXT"
-          else
-            echo "⚠️ Extension not found (may be embedded)"
+          if [ ! -d "$APP" ]; then
+            echo "❌ 未找到 JSKeyboard.app"
+            find "$ARCHIVE" -name "*.app" 2>/dev/null
+            exit 1
           fi
-      
-      - name: Package IPA
-        id: package
-        run: |
-          set -e
-          echo "=== Packaging IPA ==="
           
-          APP_PATH="${{ steps.build_main.outputs.app_path }}"
-          EXT_PATH="${{ steps.build_ext.outputs.ext_path }}"
+          echo "✅ 找到 App: $APP"
           
-          echo "App: $APP_PATH"
-          echo "Ext: $EXT_PATH"
-          
+          # 创建 Payload
           PAYLOAD="build/Payload"
           rm -rf "$PAYLOAD"
           mkdir -p "$PAYLOAD"
+          cp -R "$APP" "$PAYLOAD/"
           
-          # 复制 .app
-          cp -R "$APP_PATH" "$PAYLOAD/"
-          
-          # 嵌入 extension（如果找到）
-          if [ -n "$EXT_PATH" ]; then
-            APP_NAME=$(basename "$APP_PATH" .app)
-            PLUGINS_DIR="$PAYLOAD/$APP_NAME/PlugIns"
-            mkdir -p "$PLUGINS_DIR"
-            cp -R "$EXT_PATH" "$PLUGINS_DIR/"
-            echo "✅ Extension embedded"
-          fi
-          
-          # 生成 IPA
+          # 打包 IPA
           cd build
           zip -r ../JSKeyboard.ipa Payload -x "*.DS_Store"
           cd ..
           
-          if [ -f JSKeyboard.ipa ]; then
-            echo "✅ IPA created: $(du -sh JSKeyboard.ipa | cut -f1)"
-            echo "ipa_path=$(pwd)/JSKeyboard.ipa" >> $GITHUB_OUTPUT
-          else
-            echo "❌ IPA not found"
-            ls -la build/
-            exit 1
-          fi
+          echo "✅ IPA 生成完成"
+          ls -la JSKeyboard.ipa
+          du -sh JSKeyboard.ipa
       
       - name: Upload IPA
         if: success()
@@ -159,13 +107,19 @@ jobs:
       - name: Summary
         if: always()
         run: |
-          echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ steps.package.conclusion }}" = "success" ]; then
+          echo "## 📱 JSKeyboard Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ -f "JSKeyboard.ipa" ]; then
+            SIZE=$(du -sh JSKeyboard.ipa | cut -f1)
             echo "✅ **IPA 构建成功！**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "下载artifact获取JSKeyboard.ipa" >> $GITHUB_STEP_SUMMARY
+            echo "| 项目 | 详情 |" >> $GITHUB_STEP_SUMMARY
+            echo "|------|------|" >> $GITHUB_STEP_SUMMARY
+            echo "| 文件名 | JSKeyboard.ipa |" >> $GITHUB_STEP_SUMmary
+            echo "| 大小 | $SIZE |" >> $GITHUB_STEP_SUMMARY
+            echo "| 下载 | [点击此处](https://github.com/flexcool/JSKeyboardNew/actions/artifacts) |" >> $GITHUB_STEP_SUMMARY
           else
             echo "❌ **构建失败**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "请查看上方日志了解详情" >> $GITHUB_STEP_SUMMARY
+            echo "请查看 [Run #${{ github.run_number }}](https://github.com/flexcool/JSKeyboardNew/actions/runs/${{ github.run_number }}) 获取详细信息" >> $GITHUB_STEP_SUMMARY
           fi
