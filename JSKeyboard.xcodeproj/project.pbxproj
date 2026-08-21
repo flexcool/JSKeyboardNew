@@ -31,27 +31,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8215000000000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/AppDelegate.swift'; sourceTree = "<group>"; };
-		8215000000000002 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/SceneDelegate.swift'; sourceTree = "<group>"; };
-		8215000000000003 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Models/DataManager.swift'; sourceTree = "<group>"; };
-		8215000000000004 /* TextCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Models/TextCategory.swift'; sourceTree = "<group>"; };
-		8215000000000005 /* ClipboardEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Models/ClipboardEntry.swift'; sourceTree = "<group>"; };
-		8215000000000006 /* JSFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Models/JSFunction.swift'; sourceTree = "<group>"; };
-		8215000000000007 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Models/Settings.swift'; sourceTree = "<group>"; };
-		8215000000000008 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/ViewControllers/TabBarController.swift'; sourceTree = "<group>"; };
-		8215000000000009 /* TextTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/ViewControllers/TextTabViewController.swift'; sourceTree = "<group>"; };
-		821500000000000A /* ClipboardTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/ViewControllers/ClipboardTabViewController.swift'; sourceTree = "<group>"; };
-		821500000000000B /* JSTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/ViewControllers/JSTabViewController.swift'; sourceTree = "<group>"; };
-		821500000000000C /* SettingsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/ViewControllers/SettingsTabViewController.swift'; sourceTree = "<group>"; };
-		821500000000000D /* ViewModelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboard/Extensions/ViewModelExtensions.swift'; sourceTree = "<group>"; };
-		821500000000000E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = 'text.plist.xml'; path = '../JSKeyboard/Info.plist'; sourceTree = "<group>"; };
-		821500000000000F /* JSKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = 'text.plist.entitlements'; path = '../JSKeyboard/JSKeyboard.entitlements'; sourceTree = "<group>"; };
-		8215000000000010 /* Contents.json */ = {isa = PBXFileReference; lastKnownFileType = 'text.json'; path = '../JSKeyboard/Assets.xcassets/Contents.json'; sourceTree = "<group>"; };
-		8215000000000011 /* Contents.json */ = {isa = PBXFileReference; lastKnownFileType = 'text.json'; path = '../JSKeyboard/Assets.xcassets/AppIcon.appiconset/Contents.json'; sourceTree = "<group>"; };
-		8215000000000012 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboardExtension/KeyboardViewController.swift'; sourceTree = "<group>"; };
-		8215000000000013 /* JSKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = 'sourcecode.swift'; path = '../JSKeyboardExtension/JSKeyboardView.swift'; sourceTree = "<group>"; };
-		8215000000000014 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = 'text.plist.xml'; path = '../JSKeyboardExtension/Info.plist'; sourceTree = "<group>"; };
-		8215000000000015 /* JSKeyboardExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = 'text.plist.entitlements'; path = '../JSKeyboardExtension/JSKeyboardExtension.entitlements'; sourceTree = "<group>"; };
+		8215000000000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = '../JSKeyboard/AppDelegate.swift'; sourceTree = "<group>"; };
+		8215000000000002 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = '../JSKeyboard/SceneDelegate.swift'; sourceTree = "<group>"; };
+		8215000000000003 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = '../JSKeyboard/Models/DataManager.swift'; sourceTree = "<group>"; };
+		8215000000000004 /* TextCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = '../JSKeyboard/Models/TextCategory.swift'; sourceTree = "<group>"; };
+		8215000000000005 /* ClipboardEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = '../JSKeyboard/Models/ClipboardEntry.swift'; sourceTree = "<group>"; };
+		8215000000000006 /* JSFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = '../JSKeyboard/Models/JSFunction.swift'; sourceTree = "<group>"; };
+		8215000000000007 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = '../JSKeyboard/Models/Settings.swift'; sourceTree = "<group>"; };
+		8215000000000008 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = '../JSKeyboard/ViewControllers/TabBarController.swift'; sourceTree = "<group>"; };
+		8215000000000009 /* TextTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = '../JSKeyboard/ViewControllers/TextTabViewController.swift'; sourceTree = "<group>"; };
+		821500000000000A /* ClipboardTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = '../JSKeyboard/ViewControllers/ClipboardTabViewController.swift'; sourceTree = "<group>"; };
+		821500000000000B /* JSTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = '../JSKeyboard/ViewControllers/JSTabViewController.swift'; sourceTree = "<group>"; };
+		821500000000000C /* SettingsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = '../JSKeyboard/ViewControllers/SettingsTabViewController.swift'; sourceTree = "<group>"; };
+		821500000000000D /* ViewModelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = '../JSKeyboard/Extensions/ViewModelExtensions.swift'; sourceTree = "<group>"; };
+		821500000000000E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = '../JSKeyboard/Info.plist'; sourceTree = "<group>"; };
+		821500000000000F /* JSKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = '../JSKeyboard/JSKeyboard.entitlements'; sourceTree = "<group>"; };
+		8215000000000010 /* Contents.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = '../JSKeyboard/Assets.xcassets/Contents.json'; sourceTree = "<group>"; };
+		8215000000000011 /* Contents.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = '../JSKeyboard/Assets.xcassets/AppIcon.appiconset/Contents.json'; sourceTree = "<group>"; };
+		8215000000000012 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = '../JSKeyboardExtension/KeyboardViewController.swift'; sourceTree = "<group>"; };
+		8215000000000013 /* JSKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = '../JSKeyboardExtension/JSKeyboardView.swift'; sourceTree = "<group>"; };
+		8215000000000014 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = '../JSKeyboardExtension/Info.plist'; sourceTree = "<group>"; };
+		8215000000000015 /* JSKeyboardExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = '../JSKeyboardExtension/JSKeyboardExtension.entitlements'; sourceTree = "<group>"; };
 		821500000000002B /* JSKeyboard.app */ = {isa = PBXProductReference; explicitFileType = application.identifier; path = JSKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		821500000000002C /* JSKeyboardExtension.appex */ = {isa = PBXProductReference; explicitFileType = "com.apple.product-type.bundle"; path = JSKeyboardExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
