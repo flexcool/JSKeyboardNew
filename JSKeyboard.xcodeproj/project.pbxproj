@@ -1,7 +1,7 @@
 // !$*UTF$!*
 objectVersion = 56;
 objects = {
-/* Begin PBXBuildFile section */
+	/* Begin PBXBuildFile section */
 		09867EEE /* AppDelegate.swift in Resources */ = {isa = PBXBuildFile; fileRef = 09867EEE /* AppDelegate.swift */; };
 		FA4525BD /* SceneDelegate.swift in Resources */ = {isa = PBXBuildFile; fileRef = FA4525BD /* SceneDelegate.swift */; };
 		364A8969 /* DataManager.swift in Resources */ = {isa = PBXBuildFile; fileRef = 364A8969 /* DataManager.swift */; };
@@ -26,23 +26,23 @@ objects = {
 	/* End PBXBuildFile section */
 
 	/* Begin PBXFileReference section */
-		09867EEE /* AppDelegate.swift */ = {isa = PBXFileReference; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FA4525BD /* SceneDelegate.swift */ = {isa = PBXFileReference; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		364A8969 /* DataManager.swift */ = {isa = PBXFileReference; path = Models/DataManager.swift; sourceTree = "<group>"; };
-		DFBAEAA4 /* TextCategory.swift */ = {isa = PBXFileReference; path = Models/TextCategory.swift; sourceTree = "<group>"; };
-		4FD675EA /* ClipboardEntry.swift */ = {isa = PBXFileReference; path = Models/ClipboardEntry.swift; sourceTree = "<group>"; };
-		6D1E1DAA /* JSFunction.swift */ = {isa = PBXFileReference; path = Models/JSFunction.swift; sourceTree = "<group>"; };
-		CDF90B48 /* Settings.swift */ = {isa = PBXFileReference; path = Models/Settings.swift; sourceTree = "<group>"; };
-		064232A9 /* TabBarController.swift */ = {isa = PBXFileReference; path = ViewControllers/TabBarController.swift; sourceTree = "<group>"; };
-		485A62A3 /* TextTabViewController.swift */ = {isa = PBXFileReference; path = ViewControllers/TextTabViewController.swift; sourceTree = "<group>"; };
-		5AF89C98 /* ClipboardTabViewController.swift */ = {isa = PBXFileReference; path = ViewControllers/ClipboardTabViewController.swift; sourceTree = "<group>"; };
-		69CB68B8 /* JSTabViewController.swift */ = {isa = PBXFileReference; path = ViewControllers/JSTabViewController.swift; sourceTree = "<group>"; };
-		F37DB011 /* SettingsTabViewController.swift */ = {isa = PBXFileReference; path = ViewControllers/SettingsTabViewController.swift; sourceTree = "<group>"; };
-		4E161D78 /* ViewModelExtensions.swift */ = {isa = PBXFileReference; path = Extensions/ViewModelExtensions.swift; sourceTree = "<group>"; };
-		9E3518AB /* Info.plist */ = {isa = PBXFileReference; path = Info.plist; sourceTree = "<group>"; };
-		BD23AF8A /* JSKeyboard.entitlements */ = {isa = PBXFileReference; path = JSKeyboard.entitlements; sourceTree = "<group>"; };
-		42F4CB83 /* Contents.json */ = {isa = PBXFileReference; path = Assets.xcassets/Contents.json; sourceTree = "<group>"; };
-		D04EA8B4 /* Contents.json */ = {isa = PBXFileReference; path = Assets.xcassets/AppIcon.appiconset/Contents.json; sourceTree = "<group>"; };
+		09867EEE /* AppDelegate.swift */ = {isa = PBXFileReference; path = ../JSKeyboard/AppDelegate.swift; sourceTree = "<group>"; };
+		FA4525BD /* SceneDelegate.swift */ = {isa = PBXFileReference; path = ../JSKeyboard/SceneDelegate.swift; sourceTree = "<group>"; };
+		364A8969 /* DataManager.swift */ = {isa = PBXFileReference; path = ../JSKeyboard/Models/DataManager.swift; sourceTree = "<group>"; };
+		DFBAEAA4 /* TextCategory.swift */ = {isa = PBXFileReference; path = ../JSKeyboard/Models/TextCategory.swift; sourceTree = "<group>"; };
+		4FD675EA /* ClipboardEntry.swift */ = {isa = PBXFileReference; path = ../JSKeyboard/Models/ClipboardEntry.swift; sourceTree = "<group>"; };
+		6D1E1DAA /* JSFunction.swift */ = {isa = PBXFileReference; path = ../JSKeyboard/Models/JSFunction.swift; sourceTree = "<group>"; };
+		CDF90B48 /* Settings.swift */ = {isa = PBXFileReference; path = ../JSKeyboard/Models/Settings.swift; sourceTree = "<group>"; };
+		064232A9 /* TabBarController.swift */ = {isa = PBXFileReference; path = ../JSKeyboard/ViewControllers/TabBarController.swift; sourceTree = "<group>"; };
+		485A62A3 /* TextTabViewController.swift */ = {isa = PBXFileReference; path = ../JSKeyboard/ViewControllers/TextTabViewController.swift; sourceTree = "<group>"; };
+		5AF89C98 /* ClipboardTabViewController.swift */ = {isa = PBXFileReference; path = ../JSKeyboard/ViewControllers/ClipboardTabViewController.swift; sourceTree = "<group>"; };
+		69CB68B8 /* JSTabViewController.swift */ = {isa = PBXFileReference; path = ../JSKeyboard/ViewControllers/JSTabViewController.swift; sourceTree = "<group>"; };
+		F37DB011 /* SettingsTabViewController.swift */ = {isa = PBXFileReference; path = ../JSKeyboard/ViewControllers/SettingsTabViewController.swift; sourceTree = "<group>"; };
+		4E161D78 /* ViewModelExtensions.swift */ = {isa = PBXFileReference; path = ../JSKeyboard/Extensions/ViewModelExtensions.swift; sourceTree = "<group>"; };
+		9E3518AB /* Info.plist */ = {isa = PBXFileReference; path = ../JSKeyboard/Info.plist; sourceTree = "<group>"; };
+		BD23AF8A /* JSKeyboard.entitlements */ = {isa = PBXFileReference; path = ../JSKeyboard/JSKeyboard.entitlements; sourceTree = "<group>"; };
+		42F4CB83 /* Contents.json */ = {isa = PBXFileReference; path = ../JSKeyboard/Assets.xcassets/Contents.json; sourceTree = "<group>"; };
+		D04EA8B4 /* Contents.json */ = {isa = PBXFileReference; path = ../JSKeyboard/Assets.xcassets/AppIcon.appiconset/Contents.json; sourceTree = "<group>"; };
 		EDCECECF /* KeyboardViewController.swift */ = {isa = PBXFileReference; path = ../JSKeyboardExtension/KeyboardViewController.swift; sourceTree = "<group>"; };
 		A955EBAE /* JSKeyboardView.swift */ = {isa = PBXFileReference; path = ../JSKeyboardExtension/JSKeyboardView.swift; sourceTree = "<group>"; };
 		10B576DE /* Info.plist */ = {isa = PBXFileReference; path = ../JSKeyboardExtension/Info.plist; sourceTree = "<group>"; };
