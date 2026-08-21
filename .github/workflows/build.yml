@@ -20,20 +20,29 @@ jobs:
         run: |
           sudo xcode-select -switch /Applications/Xcode.app
           xcodebuild -version
-          echo "=== Available schemes ==="
-          xcodebuild -project JSKeyboard.xcodeproj -list 2>&1 || true
+          echo "=== Check project ==="
+          ls -la JSKeyboard.xcodeproj/
+          echo "=== Check workspace ==="
+          ls -la JSKeyboard.xcworkspace/ 2>/dev/null || echo "no workspace"
       
-      - name: Build Main App
-        id: build_app
+      - name: Build with xcodebuild (using project)
+        id: build
         run: |
           set -e
           rm -rf build
           mkdir -p build
           
-          echo "=== Building JSKeyboard ==="
+          # 尝试用 workspace（如果存在）或 project
+          if [ -d "JSKeyboard.xcworkspace" ]; then
+            PROJECT_ARG="-workspace JSKeyboard.xcworkspace"
+          else
+            PROJECT_ARG="-project JSKeyboard.xcodeproj"
+          fi
+          
+          echo "=== Building with: $PROJECT_ARG ==="
           xcodebuild build \
-            -project JSKeyboard.xcodeproj \
-            -target JSKeyboard \
+            $PROJECT_ARG \
+            -scheme JSKeyboard \
             -configuration Release \
             -sdk iphoneos \
             -arch arm64 \
@@ -43,64 +52,39 @@ jobs:
             PRODUCT_BUNDLE_IDENTIFIER=com.jskeyboard.app \
             IPHONEOS_DEPLOYMENT_TARGET=15.0 \
             VALID_ARCHS=arm64 \
-            2>&1 | tee build/app.log
+            2>&1 | tee build/build.log
           
-          APP=$(find . -name "JSKeyboard.app" -type d 2>/dev/null | head -1)
+          echo ""
+          echo "=== Finding .app ==="
+          APP=$(find build -name "JSKeyboard.app" -type d 2>/dev/null | head -1)
+          if [ -z "$APP" ]; then
+            echo "Looking in derived data..."
+            APP=$(find ~/Library/Developer/Xcode/DerivedData -name "JSKeyboard.app" -type d 2>/dev/null | head -1)
+          fi
+          
           if [ -n "$APP" ]; then
             echo "app_path=$APP" >> $GITHUB_OUTPUT
-            echo "✅ App built: $APP"
+            echo "✅ App found: $APP"
+            ls -la "$APP"
           else
-            echo "❌ App not found"
-            find . -name "*.app" -type d 2>/dev/null
+            echo "❌ App not found in build or DerivedData"
+            echo "Build log tail:"
+            tail -30 build/build.log
             echo "app_path=" >> $GITHUB_OUTPUT
             exit 1
           fi
       
-      - name: Build Extension
-        id: build_ext
-        run: |
-          set -e
-          echo "=== Building JSKeyboardExtension ==="
-          xcodebuild build \
-            -project JSKeyboard.xcodeproj \
-            -target JSKeyboardExtension \
-            -configuration Release \
-            -sdk iphoneos \
-            -arch arm64 \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_IDENTITY="" \
-            PRODUCT_BUNDLE_IDENTIFIER=com.jskeyboard.app.keyboard \
-            IPHONEOS_DEPLOYMENT_TARGET=15.0 \
-            VALID_ARCHS=arm64 \
-            2>&1 | tee build/ext.log
-          
-          EXT=$(find . -name "JSKeyboardExtension.appex" -type d 2>/dev/null | head -1)
-          if [ -n "$EXT" ]; then
-            echo "ext_path=$EXT" >> $GITHUB_OUTPUT
-            echo "✅ Extension built: $EXT"
-          else
-            echo "ext_path=" >> $GITHUB_OUTPUT
-            echo "⚠️ Extension not found (will embed in app)"
-          fi
-      
       - name: Package IPA
-        id: package
+        if: steps.build.outcome == 'success'
         run: |
           set -e
-          APP="${{ steps.build_app.outputs.app_path }}"
-          EXT="${{ steps.build_ext.outputs.ext_path }}"
+          APP="${{ steps.build.outputs.app_path }}"
+          echo "Packaging: $APP"
           
           PAYLOAD="build/Payload"
           rm -rf "$PAYLOAD"
           mkdir -p "$PAYLOAD"
           cp -R "$APP" "$PAYLOAD/"
-          
-          if [ -n "$EXT" ]; then
-            APP_NAME=$(basename "$APP" .app)
-            mkdir -p "$PAYLOAD/$APP_NAME/PlugIns"
-            cp -R "$EXT" "$PAYLOAD/$APP_NAME/PlugIns/"
-          fi
           
           cd build
           zip -r ../JSKeyboard.ipa Payload -x "*.DS_Store"
@@ -131,10 +115,6 @@ jobs:
           echo "## 📱 JSKeyboard Build" >> $GITHUB_STEP_SUMMARY
           if [ -f "JSKeyboard.ipa" ]; then
             echo "✅ **IPA 构建成功！**" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "请从 Actions → Artifacts 下载 JSKeyboard.ipa" >> $GITHUB_STEP_SUMMARY
           else
             echo "❌ **构建失败**" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "查看上方日志了解详情" >> $GITHUB_STEP_SUMMARY
           fi
