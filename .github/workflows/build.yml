@@ -16,28 +16,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
-      - name: Set up Xcode
-        run: |
-          sudo xcode-select -switch /Applications/Xcode.app
-          xcodebuild -version
-          xcodebuild -list -project JSKeyboard.xcodeproj
-          echo "=== Check project structure ==="
-          find JSKeyboard.xcodeproj -type f | sort
-          echo "=== Check scheme ==="
-          ls -la JSKeyboard.xcodeproj/xcshareddata/xcschemes/
-      
-      - name: Build with xcodebuild
+      - name: Build
         id: build
         run: |
           set -e
           rm -rf build
           mkdir -p build
           
-          # 列出所有可用的 scheme
-          echo "=== Available schemes ==="
-          xcodebuild -list -project JSKeyboard.xcodeproj 2>&1 || true
-          
-          echo "=== Building ==="
           xcodebuild build \
             -project JSKeyboard.xcodeproj \
             -scheme JSKeyboard \
@@ -53,25 +38,18 @@ jobs:
             2>&1 | tee build/build.log
           
           echo ""
-          echo "=== Build Result ==="
-          echo "Exit code: ${PIPESTATUS[0]}"
-          
-          echo ""
           echo "=== Finding .app ==="
           APP=$(find build -name "JSKeyboard.app" -type d 2>/dev/null | head -1)
           if [ -z "$APP" ]; then
-            echo "Looking in DerivedData..."
             APP=$(find ~/Library/Developer/Xcode/DerivedData -name "JSKeyboard.app" -type d 2>/dev/null | head -1)
           fi
           
           if [ -n "$APP" ]; then
             echo "app_path=$APP" >> $GITHUB_OUTPUT
             echo "✅ App found: $APP"
-            ls -la "$APP"
           else
             echo "❌ App not found"
-            echo "Build log tail:"
-            tail -50 build/build.log
+            tail -30 build/build.log
             echo "app_path=" >> $GITHUB_OUTPUT
             exit 1
           fi
@@ -81,19 +59,14 @@ jobs:
         run: |
           set -e
           APP="${{ steps.build.outputs.app_path }}"
-          echo "Packaging: $APP"
-          
           PAYLOAD="build/Payload"
           rm -rf "$PAYLOAD"
           mkdir -p "$PAYLOAD"
           cp -R "$APP" "$PAYLOAD/"
-          
           cd build
           zip -r ../JSKeyboard.ipa Payload -x "*.DS_Store"
           cd ..
-          
           echo "✅ IPA created: $(du -sh JSKeyboard.ipa | cut -f1)"
-          ls -la JSKeyboard.ipa
       
       - name: Upload IPA
         if: success()
@@ -117,8 +90,6 @@ jobs:
           echo "## 📱 JSKeyboard Build" >> $GITHUB_STEP_SUMMARY
           if [ -f "JSKeyboard.ipa" ]; then
             echo "✅ **IPA 构建成功！**" >> $GITHUB_STEP_SUMMARY
-            echo "- [下载 IPA](https://github.com/flexcool/JSKeyboardNew/actions/runs/$GITHUB_RUN_ID/artifacts)" >> $GITHUB_STEP_SUMMARY
           else
             echo "❌ **构建失败**" >> $GITHUB_STEP_SUMMARY
-            echo "- [查看详细日志](https://github.com/flexcool/JSKeyboardNew/actions/runs/$GITHUB_RUN_ID)" >> $GITHUB_STEP_SUMMARY
           fi
