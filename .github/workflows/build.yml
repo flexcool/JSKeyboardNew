@@ -16,14 +16,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
-      - name: Build Main App
-        id: build_app
+      - name: Build
+        id: build
         run: |
           set -e
           rm -rf build
           mkdir -p build
           
-          echo "=== Building Main App ==="
+          echo "=== Building ==="
           xcodebuild build \
             -project JSKeyboard.xcodeproj \
             -scheme JSKeyboard \
@@ -36,65 +36,47 @@ jobs:
             PRODUCT_BUNDLE_IDENTIFIER=com.jskeyboard.app \
             IPHONEOS_DEPLOYMENT_TARGET=15.0 \
             VALID_ARCHS=arm64 \
-            OTHER_CODE_SIGN_FLAGS="--timestamp=none" \
-            2>&1 | tee build/app.log
+            2>&1 | tee build/build.log
           
+          echo ""
+          echo "=== Finding built products ==="
           APP=$(find build -name "JSKeyboard.app" -type d 2>/dev/null | head -1)
+          EXT=$(find build -name "JSKeyboardExtension.appex" -type d 2>/dev/null | head -1)
+          
+          # Also check DerivedData
           if [ -z "$APP" ]; then
             APP=$(find ~/Library/Developer/Xcode/DerivedData -name "JSKeyboard.app" -type d 2>/dev/null | head -1)
           fi
-          
-          if [ -n "$APP" ]; then
-            echo "app_path=$APP" >> $GITHUB_OUTPUT
-            echo "✅ Main app built: $APP"
-          else
-            echo "❌ Main app not found"
-            tail -20 build/app.log
-            echo "app_path=" >> $GITHUB_OUTPUT
-            exit 1
-          fi
-      
-      - name: Build Extension
-        id: build_ext
-        run: |
-          set -e
-          echo "=== Building Extension ==="
-          xcodebuild build \
-            -project JSKeyboard.xcodeproj \
-            -scheme JSKeyboard \
-            -target JSKeyboardExtension \
-            -configuration Release \
-            -sdk iphoneos \
-            -arch arm64 \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_IDENTITY="" \
-            PRODUCT_BUNDLE_IDENTIFIER=com.jskeyboard.app.keyboard \
-            IPHONEOS_DEPLOYMENT_TARGET=15.0 \
-            VALID_ARCHS=arm64 \
-            OTHER_CODE_SIGN_FLAGS="--timestamp=none" \
-            2>&1 | tee build/ext.log
-          
-          EXT=$(find build -name "JSKeyboardExtension.appex" -type d 2>/dev/null | head -1)
           if [ -z "$EXT" ]; then
             EXT=$(find ~/Library/Developer/Xcode/DerivedData -name "JSKeyboardExtension.appex" -type d 2>/dev/null | head -1)
           fi
           
+          echo "App: ${APP:-not found}"
+          echo "Ext: ${EXT:-not found}"
+          
+          if [ -n "$APP" ]; then
+            echo "app_path=$APP" >> $GITHUB_OUTPUT
+            echo "✅ App found"
+          else
+            echo "❌ App not found"
+            tail -30 build/build.log
+            exit 1
+          fi
+          
           if [ -n "$EXT" ]; then
             echo "ext_path=$EXT" >> $GITHUB_OUTPUT
-            echo "✅ Extension built: $EXT"
+            echo "✅ Extension found"
           else
-            echo "❌ Extension not found"
-            tail -20 build/ext.log
             echo "ext_path=" >> $GITHUB_OUTPUT
+            echo "⚠️ Extension not found"
           fi
       
       - name: Package IPA
-        if: steps.build_app.outcome == 'success'
+        if: steps.build.outcome == 'success'
         run: |
           set -e
-          APP="${{ steps.build_app.outputs.app_path }}"
-          EXT="${{ steps.build_ext.outputs.ext_path }}"
+          APP="${{ steps.build.outputs.app_path }}"
+          EXT="${{ steps.build.outputs.ext_path }}"
           
           echo "=== Packaging IPA ==="
           echo "App: $APP"
@@ -105,7 +87,7 @@ jobs:
           mkdir -p "$PAYLOAD"
           cp -R "$APP" "$PAYLOAD/"
           
-          # 复制 extension 到 app 内部（如果需要）
+          # Embed extension if found
           if [ -n "$EXT" ]; then
             EXT_NAME=$(basename "$EXT")
             APP_NAME=$(basename "$APP" .app)
