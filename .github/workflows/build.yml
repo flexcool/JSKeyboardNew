@@ -20,24 +20,26 @@ jobs:
         run: |
           sudo xcode-select -switch /Applications/Xcode.app
           xcodebuild -version
-          echo "=== Check project ==="
-          ls -la JSKeyboard.xcodeproj/
-          echo "=== Check workspace ==="
-          ls -la JSKeyboard.xcworkspace/ 2>/dev/null || echo "no workspace"
+          xcodebuild -list -project JSKeyboard.xcodeproj
+          echo "=== Check project structure ==="
+          find JSKeyboard.xcodeproj -type f | sort
+          echo "=== Check scheme ==="
+          ls -la JSKeyboard.xcodeproj/xcshareddata/xcschemes/
       
-      - name: Build with xcodebuild (using project)
+      - name: Build with xcodebuild
         id: build
         run: |
           set -e
           rm -rf build
           mkdir -p build
           
-          # 使用 project（scheme 在 project 中）
-          PROJECT_ARG="-project JSKeyboard.xcodeproj" 
+          # 列出所有可用的 scheme
+          echo "=== Available schemes ==="
+          xcodebuild -list -project JSKeyboard.xcodeproj 2>&1 || true
           
-          echo "=== Building with: $PROJECT_ARG ==="
+          echo "=== Building ==="
           xcodebuild build \
-            $PROJECT_ARG \
+            -project JSKeyboard.xcodeproj \
             -scheme JSKeyboard \
             -configuration Release \
             -sdk iphoneos \
@@ -51,10 +53,14 @@ jobs:
             2>&1 | tee build/build.log
           
           echo ""
+          echo "=== Build Result ==="
+          echo "Exit code: ${PIPESTATUS[0]}"
+          
+          echo ""
           echo "=== Finding .app ==="
           APP=$(find build -name "JSKeyboard.app" -type d 2>/dev/null | head -1)
           if [ -z "$APP" ]; then
-            echo "Looking in derived data..."
+            echo "Looking in DerivedData..."
             APP=$(find ~/Library/Developer/Xcode/DerivedData -name "JSKeyboard.app" -type d 2>/dev/null | head -1)
           fi
           
@@ -63,9 +69,9 @@ jobs:
             echo "✅ App found: $APP"
             ls -la "$APP"
           else
-            echo "❌ App not found in build or DerivedData"
+            echo "❌ App not found"
             echo "Build log tail:"
-            tail -30 build/build.log
+            tail -50 build/build.log
             echo "app_path=" >> $GITHUB_OUTPUT
             exit 1
           fi
@@ -111,6 +117,8 @@ jobs:
           echo "## 📱 JSKeyboard Build" >> $GITHUB_STEP_SUMMARY
           if [ -f "JSKeyboard.ipa" ]; then
             echo "✅ **IPA 构建成功！**" >> $GITHUB_STEP_SUMMARY
+            echo "- [下载 IPA](https://github.com/flexcool/JSKeyboardNew/actions/runs/$GITHUB_RUN_ID/artifacts)" >> $GITHUB_STEP_SUMMARY
           else
             echo "❌ **构建失败**" >> $GITHUB_STEP_SUMMARY
+            echo "- [查看详细日志](https://github.com/flexcool/JSKeyboardNew/actions/runs/$GITHUB_RUN_ID)" >> $GITHUB_STEP_SUMMARY
           fi
