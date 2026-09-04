@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [main, master]
   workflow_dispatch:
+    inputs:
+      verbose:
+        description: 'Enable verbose logging'
+        required: false
+        default: 'false'
 
 jobs:
   build:
@@ -15,6 +20,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      
+      - name: Environment Info
+        run: |
+          echo "=== System Info ==="
+          xcode-select -p
+          xcodebuild -version
+          swift --version 2>/dev/null || echo "swift not available"
+          echo ""
+          echo "=== Project Structure ==="
+          find JSKeyboard.xcodeproj -type f | sort
+          echo ""
+          echo "=== XCScheme ==="
+          ls -la JSKeyboard.xcodeproj/xcshareddata/xcschemes/
+          echo ""
+          cat JSKeyboard.xcodeproj/xcshareddata/xcschemes/JSKeyboard.xcscheme
+      
+      - name: List Schemes
+        id: list_schemes
+        run: |
+          echo "=== Available Schemes ==="
+          xcodebuild -list -project JSKeyboard.xcodeproj 2>&1 || echo "Failed to list schemes"
       
       - name: Build
         id: build
@@ -38,6 +64,9 @@ jobs:
             VALID_ARCHS=arm64 \
             2>&1 | tee build/build.log
           
+          BUILD_EXIT=${PIPESTATUS[0]}
+          echo "Build exit code: $BUILD_EXIT"
+          
           echo ""
           echo "=== Finding built products ==="
           APP=$(find build -name "JSKeyboard.app" -type d 2>/dev/null | head -1)
@@ -59,7 +88,9 @@ jobs:
             echo "✅ App found"
           else
             echo "❌ App not found"
-            tail -30 build/build.log
+            echo "=== Build Log (last 50 lines) ==="
+            tail -50 build/build.log
+            echo "app_path=" >> $GITHUB_OUTPUT
             exit 1
           fi
           
@@ -79,15 +110,11 @@ jobs:
           EXT="${{ steps.build.outputs.ext_path }}"
           
           echo "=== Packaging IPA ==="
-          echo "App: $APP"
-          echo "Ext: ${EXT:-none}"
-          
           PAYLOAD="build/Payload"
           rm -rf "$PAYLOAD"
           mkdir -p "$PAYLOAD"
           cp -R "$APP" "$PAYLOAD/"
           
-          # Embed extension if found
           if [ -n "$EXT" ]; then
             EXT_NAME=$(basename "$EXT")
             APP_NAME=$(basename "$APP" .app)
